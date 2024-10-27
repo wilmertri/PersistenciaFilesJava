@@ -1,13 +1,17 @@
+import entities.Department;
 import entities.Employee;
+import repositories.DepartmentRepository;
 import repositories.EmployeeRepository;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         EmployeeRepository employeeRepository = new EmployeeRepository();
-        ArrayList<Employee> AllEmployees = employeeRepository.getDataList();
-        Employee deleteEmployee = AllEmployees.get(14);
-        employeeRepository.deleteDataEntity(deleteEmployee);
+        DepartmentRepository departmentRepository = new DepartmentRepository();
+        //ArrayList<Employee> AllEmployees = employeeRepository.getDataList();
+        //Employee deleteEmployee = AllEmployees.get(14);
+        //employeeRepository.deleteDataEntity(deleteEmployee);
         /*
         Employee newEmployee = new Employee(17, "Monica", "Belluci", 120, "3652148796");
         employeeRepository.insertDataEntity(newEmployee);
@@ -31,6 +35,21 @@ public class Main {
             System.out.println("Name: " + e.getFullName());
             System.out.println("cellPhone: " + e.getPhoneNumber());
             System.out.println("Salary: " + e.getSalary());
+            System.out.println("Department: " + e.getDepartment().getName());
         }
+
+        /**
+        List<Department> departments = departmentRepository.getDataList();
+        System.out.println("Info Departments");
+        System.out.println("-----------------------------");
+        for (Department d : departments){
+            System.out.println("Name: " + d.getId() + " - " + d.getName());
+        }
+        System.out.println("Info Department with Id: 1");
+        Department department = departmentRepository.findEntityById(3);
+        if(department != null){
+            System.out.println("Name: " + department.getId() + " - " + department.getName());
+        }
+         **/
     }
 }

@@ -1,5 +1,6 @@
 package repositories;
 
+import entities.Department;
 import entities.Employee;
 import persistence.FileManage;
 
@@ -10,10 +11,12 @@ public class EmployeeRepository {
 
     private final FileManage fileManage;
     private String delimiterToken;
+    protected DepartmentRepository departmentRepository;
 
     public EmployeeRepository(){
         this.fileManage = new FileManage("employees.txt");
         this.delimiterToken = "|";
+        this.departmentRepository = new DepartmentRepository();
     }
 
     public ArrayList<Employee> getDataList(){
@@ -28,7 +31,12 @@ public class EmployeeRepository {
                 String lastName = tokens.nextToken();
                 double salary = Double.parseDouble(tokens.nextToken());
                 String phoneNumber = tokens.nextToken();
+                int idDepartment = Integer.parseInt(tokens.nextToken());
+                Department department = this.departmentRepository.findEntityById(idDepartment);
                 Employee employee = new Employee(id, firstName, lastName, salary, phoneNumber);
+                if(department != null){
+                    employee.setDepartment(department);
+                }
                 employees.add(employee);
             }
         }

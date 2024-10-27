@@ -1,0 +1,10 @@
+1|Human Resources
+2|Engineering
+3|Marketing
+4|Finance
+5|Customer Support
+6|Sales
+7|IT
+8|Legal
+9|Operations
+10|Research and Development
