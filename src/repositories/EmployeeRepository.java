@@ -59,6 +59,6 @@ public class EmployeeRepository {
     private String getLineData(Employee employee){
         return employee.getId() + this.delimiterToken + employee.getFirstName() + this.delimiterToken +
                 employee.getLastName() + this.delimiterToken + Math.round(employee.getSalary()) + this.delimiterToken +
-                employee.getPhoneNumber();
+                employee.getPhoneNumber() + this.delimiterToken + employee.getDepartment().getId();
     }
 }

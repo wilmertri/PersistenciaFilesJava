@@ -4,11 +4,13 @@ import repositories.DepartmentRepository;
 import repositories.EmployeeRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
         EmployeeRepository employeeRepository = new EmployeeRepository();
         DepartmentRepository departmentRepository = new DepartmentRepository();
+        List<Department> departments = departmentRepository.getDataList();
         //ArrayList<Employee> AllEmployees = employeeRepository.getDataList();
         //Employee deleteEmployee = AllEmployees.get(14);
         //employeeRepository.deleteDataEntity(deleteEmployee);
@@ -37,6 +39,12 @@ public class Main {
             System.out.println("Salary: " + e.getSalary());
             System.out.println("Department: " + e.getDepartment().getName());
         }
+
+        int newId = employees.size() + 1;
+        Employee newEmployee = new Employee(newId, "Name New User " + newId, "Last Name User " + newId, 350, "3652148796");
+        Department department = departments.get(2);
+        newEmployee.setDepartment(department);
+        employeeRepository.insertDataEntity(newEmployee);
 
         /**
         List<Department> departments = departmentRepository.getDataList();
